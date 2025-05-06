@@ -67,7 +67,8 @@
 1. **Clone o repositório e acesse a pasta:**
 
 ```bash
-git clone https://github.com/JRafaelRosa/Promt-AI.git
+
+git clone https://github.com/JRafaelRosa/IA_Study_Hub.git
 cd ia-study-hub
 ```
 
