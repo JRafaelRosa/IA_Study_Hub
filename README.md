@@ -1,61 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# IA Study Hub
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**IA Study Hub** é uma plataforma de aprendizado interativo sobre Inteligência Artificial (IA), com foco especial em engenharia de prompt. O objetivo é reunir conteúdo didático, exemplos práticos, glossário e recursos úteis para quem quer dominar o uso de ferramentas baseadas em IA.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🧠 Funcionalidades do Sistema
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👥 Público Geral (Visitante)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- 🔍 Buscar prompts por nome, tipo, categoria ou tag  
+- 📂 Navegar por categorias  
+- 🧪 Ver prompt + exemplo de uso + explicação  
+- 📚 Consultar glossário de termos  
+- 🔗 Acessar ferramentas e recursos externos  
 
-## Learning Laravel
+### 🔒 Admin / Editor (Restrito)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ✏️ Criar, editar e excluir:
+  - Prompts
+  - Categorias
+  - Tipos de prompt
+  - Glossário
+  - Ferramentas
+- 🗃️ Organizar ordem de exibição e destaque a funções do sistema
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Tecnologias Utilizadas
 
-## Laravel Sponsors
+- **Backend:** Laravel  
+- **Frontend:** React  
+- **Banco de Dados:** MySQL  
+- **ORM:** Eloquent  
+- **Outros:** TailwindCSS, Axios, Vite
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
+## 🧭 Fluxograma do Sistema
 
-### Premium Partners
+<img src="https://i.postimg.cc/rmXCJvP4/Chat-GPT-Image-5-de-mai-de-2025-14-58-36.png" alt="Fluxograma do Sistema" width="600"/>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+> 🗺️ Este fluxograma mostra a navegação entre as páginas e funcionalidades do sistema de estudo de IA.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🗃️ Diagrama do Banco de Dados
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![Diagrama do Banco de Dados](https://i.postimg.cc/KzDL54LX/Untitled.png)
 
-## Security Vulnerabilities
+> 📊 [Visualizar diagrama em sql](https://dbdiagram.io/d/IA-Study-Hub-6818f7371ca52373f58a8db6)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## 🚀 Instalação
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Requisitos
+
+- PHP : 8.2  
+- Composer
+- Laravel 12
+- Node.js e npm  
+- MySQL
+
+### Passos
+
+# 1. Clone o repositório
+git clone https://github.com/JRafaelRosa/Promt-AI.git
+cd ia-study-hub
+
+# 2. Instale as dependências do Laravel (backend)
+composer install
+
+# 3. Copie o arquivo de ambiente e configure
+cp .env.example .env
+
+# 4. Gere a chave da aplicação
+php artisan key:generate
+
+# 5. Configure o banco de dados no arquivo .env:
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=ia_study
+# DB_USERNAME=root
+# DB_PASSWORD=sua_senha
+
+# 6. Execute as migrations
+php artisan migrate
+
+# 7. Instale as dependências do frontend (React com Vite)
+npm install
+
+# 8. Inicie o servidor de desenvolvimento do frontend (Vite)
+npm run dev
+
+# 9. Em outro terminal, inicie o servidor do Laravel
+php artisan serve
