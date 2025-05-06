@@ -61,36 +61,63 @@
 - Node.js e npm  
 - MySQL
 
-### Passos
 
-# 1. Clone o repositório
+### 🚀 Passos para Instalação
+
+1. **Clone o repositório e acesse a pasta:**
+
+```bash
 git clone https://github.com/JRafaelRosa/Promt-AI.git
 cd ia-study-hub
+```
 
-# 2. Instale as dependências do Laravel (backend)
+2. **Instale as dependências do Laravel (backend):**
+
+```bash
 composer install
+```
 
-# 3. Copie o arquivo de ambiente e configure
+3. **Copie e configure o arquivo `.env`:**
+
+```bash
 cp .env.example .env
+```
 
-# 4. Gere a chave da aplicação
+> Edite o `.env` com as configurações do banco:
+```
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ia_study
+DB_USERNAME=root
+DB_PASSWORD=sua_senha
+```
+
+4. **Gere a chave da aplicação:**
+
+```bash
 php artisan key:generate
+```
 
-# 5. Configure o banco de dados no arquivo .env:
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=ia_study
-# DB_USERNAME=root
-# DB_PASSWORD=sua_senha
+5. **Execute as migrations:**
 
-# 6. Execute as migrations
+```bash
 php artisan migrate
+```
 
-# 7. Instale as dependências do frontend (React com Vite)
+6. **Instale as dependências do frontend (React + Vite):**
+
+```bash
 npm install
+```
 
-# 8. Inicie o servidor de desenvolvimento do frontend (Vite)
+7. **Inicie o servidor do frontend:**
+
+```bash
 npm run dev
+```
 
-# 9. Em outro terminal, inicie o servidor do Laravel
+8. **Em outro terminal, inicie o servidor do Laravel:**
+
+```bash
 php artisan serve
+```
