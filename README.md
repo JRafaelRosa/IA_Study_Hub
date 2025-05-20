@@ -35,12 +35,18 @@
 - **Outros:** TailwindCSS, Axios, Vite
 
 ---
-## 🧭 Fluxograma do Sistema
+## 🧭 Fluxograma do Sistema Usuario
 
-<img src="https://i.postimg.cc/rmXCJvP4/Chat-GPT-Image-5-de-mai-de-2025-14-58-36.png" alt="Fluxograma do Sistema" width="600"/>
+<img src="https://i.postimg.cc/nrrXPJmv/Fluxo-User.png" alt="Fluxograma do Sistema" width="600"/>
 
 > 🗺️ Este fluxograma mostra a navegação entre as páginas e funcionalidades do sistema de estudo de IA.
 
+---
+## 🧭 Fluxograma do Sistema ADM
+
+<img src="https://i.postimg.cc/BZ7L1jWN/FluxoAdm.png" alt="Fluxograma do Sistema" width="600"/>
+
+> 🗺️ Este fluxograma mostra a navegação entre as páginas e funcionalidades do sistema para os adms.
 
 ---
 
