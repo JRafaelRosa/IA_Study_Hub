@@ -47,7 +47,7 @@
 <img src="https://i.postimg.cc/BZ7L1jWN/FluxoAdm.png" alt="Fluxograma do Sistema" width="600"/>
 
 > 🗺️ Este fluxograma mostra a navegação entre as páginas e funcionalidades do sistema para os adms.
-> 
+ 
 ---
 
 ## 🗃️ Diagrama do Banco de Dados
