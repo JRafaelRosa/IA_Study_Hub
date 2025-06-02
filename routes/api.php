@@ -4,108 +4,128 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+/**
+ * ROTAS DE AUTENTICAÇÃO
+ */
+Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+Route::post('/cadastro', [AuthController::class, 'store'])->name('api.cadastro');
+
+// Logout precisa autenticação
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth:sanctum')
+    ->name('api.logout');
+
+// Retorna usuário autenticado
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/login', [AuthController::class, 'login'])->name('api.login');
-Route::post('/cadastro', [AuthController::class, 'store'])->name('api.cadastro');
-Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
-Route::prefix('/categoria')->group(function () {
+/**
+ * ROTAS DE CATEGORIA (apenas autenticados)
+ */
+Route::prefix('categoria')->middleware('auth:sanctum')->group(function () {
+
     Route::get('/visualizar', function () {
-        return 'categoria';
+        return 'Visualizar categorias';
     });
 
-    Route::get('/{id}', function () {
-        return 'teste';
+    Route::get('/{id}', function ($id) {
+        return "Detalhes da categoria id: $id";
     });
 
-    // apenas adm
-    Route::post('/criar', function(){
-        return 'criar';
+    // Apenas admin (exemplo de middleware de permissão)
+    Route::post('/criar', function () {
+        return 'Criar categoria';
+    })->middleware('permissao');
+
+    Route::put('/atualizar/{id}', function ($id) {
+        return "Atualizar categoria id: $id";
     });
 
-    Route::put('/atualizar/{id}', function(){
-        return 'atualizar';
-    });
-
-    Route::delete('/deletar/{id}', function(){
-        return 'deletar';
+    Route::delete('/deletar/{id}', function ($id) {
+        return "Deletar categoria id: $id";
     });
 });
 
-// ROTAS EXAMPLES
-Route::prefix('/examples')->group(function () {
 
-    // GET /api/examples — lista todos, pode filtrar por categoria
+/**
+ * ROTAS DE EXEMPLOS
+ */
+Route::prefix('exemplos')->group(function () {
+
+    // Lista todos, com filtro opcional
     Route::get('/', function () {
         return 'Listar todos os exemplos (com filtro opcional)';
     });
 
-    // GET /api/examples/{id} — detalhes de um exemplo específico
+    // Detalhes de um exemplo específico
     Route::get('/{id}', function ($id) {
-        return "Detalhes do exemplo de id: $id";
+        return "Detalhes do exemplo id: $id";
     });
 
-    // POST /api/examples — criação (admin)
+    // Criação (admin)
     Route::post('/', function () {
         return 'Criar um novo exemplo (somente admin)';
-    });
+    })->middleware('permissao');
 
-    // PUT /api/examples/{id} — atualização (admin)
+    // Atualização (admin)
     Route::put('/{id}', function ($id) {
         return "Atualizar o exemplo id: $id (somente admin)";
-    });
+    })->middleware('permissao');
 
-    // DELETE /api/examples/{id} — remoção (admin)
+    // Remoção (admin)
     Route::delete('/{id}', function ($id) {
         return "Deletar o exemplo id: $id (somente admin)";
-    });
+    })->middleware('permissao');
 
+    // Marcar ou desmarcar como favorito
+    Route::post('/{id}/favorite', function ($id) {
+        return "Marcar/desmarcar exemplo id: $id como favorito";
+    })->middleware('auth:sanctum');
 });
 
-// ROTAS ARTICLES
-Route::prefix('/articles')->group(function () {
 
-    // GET /api/articles — lista todos os artigos
+/**
+ * ROTAS DE ARTIGOS
+ */
+Route::prefix('artigos')->group(function () {
+
+    // Lista todos os artigos
     Route::get('/', function () {
         return 'Listar todos os artigos';
     });
 
-    // GET /api/articles/{id} — detalhes do artigo
-    Route::get('/{id}', function () {
-        return "Detalhes do artigo id: ";
+    // Detalhes de um artigo
+    Route::get('/{id}', function ($id) {
+        return "Detalhes do artigo id: $id";
     });
 
-    // POST /api/articles — criação (admin)
+    // Criação (admin)
     Route::post('/', function () {
         return 'Criar um novo artigo (somente admin)';
-    });
+    })->middleware('permissao');
 
-    // PUT /api/articles/{id} — atualização (admin)
+    // Atualização (admin)
     Route::put('/{id}', function ($id) {
         return "Atualizar o artigo id: $id (somente admin)";
-    });
+    })->middleware('permissao');
 
-    // DELETE /api/articles/{id} — exclusão (admin)
-    Route::delete('/{id}', function () {
-        return "Deletar o artigo id: (somente admin)";
-    });
-
+    // Exclusão (admin)
+    Route::delete('/{id}', function ($id) {
+        return "Deletar o artigo id: $id (somente admin)";
+    })->middleware('permissao');
 });
 
-// ROTAS FAVORITES
-Route::prefix('/favorites')->group(function () {
 
-    // GET /api/favorites — lista favoritos do usuário autenticado
+/**
+ * ROTAS DE FAVORITOS (apenas autenticados)
+ */
+Route::prefix('favoritos')->middleware('auth:sanctum')->group(function () {
+
+    // Lista favoritos do usuário autenticado
     Route::get('/', function () {
         return 'Listar exemplos favoritos do usuário autenticado';
     });
 
-});
-
-// POST /api/examples/{id}/favorite — marca ou desmarca favorito
-Route::post('/examples/{id}/favorite', function () {
-    return "Marcar/desmarcar exemplo id: como favorito";
 });
