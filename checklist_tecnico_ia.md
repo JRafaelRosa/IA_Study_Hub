@@ -11,7 +11,7 @@
 - [ ] Uso de **Eloquent ORM** para manipulação segura de dados.
 - [ ] Arquitetura RESTful nas rotas da API.
 - [ ] Versionamento de API planejado (ex: `/api/v1/`).
-- [ ] Middleware organizado para autenticação e permissões.
+- [X] Middleware organizado para autenticação e permissões.
 
 ### 🔹 Organização do Frontend
 - [ ] Uso do **React Router** para navegação.
@@ -27,7 +27,7 @@
 ### 🔹 Autenticação e Autorização
 - [ ] Autenticação com **Laravel Sanctum** (token-based).
 - [ ] Proteção por **middleware `auth:sanctum`** nas rotas sensíveis.
-- [ ] Middleware `isAdmin` para rotas restritas.
+- [X] Middleware `isAdmin` para rotas restritas.
 - [ ] Tokens armazenados de forma segura no frontend (ex: em `httpOnly cookies` ou armazenamento seguro).
 - [ ] Logout invalida o token corretamente.
 

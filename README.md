@@ -105,10 +105,14 @@ DB_PASSWORD=sua_senha
 php artisan key:generate
 ```
 
-5. **Execute as migrations:**
+5. **Execute as migrations e seeds:**
 
 ```bash
 php artisan migrate
+```
+
+```bash
+php artisan db:seed --class=PermissaoSeeder
 ```
 
 6. **Instale as dependências do frontend (React + Vite):**
