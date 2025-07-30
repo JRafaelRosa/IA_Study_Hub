@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ArtigoController;
 
 /**
  * ROTAS DE AUTENTICAÇÃO
@@ -29,26 +31,16 @@ Route::get('/home', function () {
  */
 Route::prefix('categoria')->group(function () {
 
-    Route::get('/visualizar', function () {
-        return 'Visualizar categorias';
-    });
+    Route::get('/visualizar', [CategoriaController::class, 'listar']);
 
-    Route::get('/{id}', function ($id) {
-        return "Detalhes da categoria id: $id";
-    });
+    Route::get('/{id}', [CategoriaController::class, 'showCategoria']);
 
     // Apenas admin (exemplo de middleware de permissão)
-    Route::post('/criar', function () {
-        return 'Criar categoria';
-    })->middleware('permissao');
+    Route::post('/criar', [CategoriaController::class, 'store'])->middleware('permissao');
 
-    Route::put('/atualizar/{id}', function ($id) {
-        return "Atualizar categoria id: $id";
-    });
+    Route::put('/atualizar/{id}', [CategoriaController::class, 'update'])->middleware('permissao');
 
-    Route::delete('/deletar/{id}', function ($id) {
-        return "Deletar categoria id: $id";
-    });
+    Route::delete('/deletar/{id}', [CategoriaController::class, 'destroy'])->middleware('permissao');
 });
 
 
@@ -95,29 +87,19 @@ Route::prefix('exemplos')->group(function () {
 Route::prefix('artigos')->group(function () {
 
     // Lista todos os artigos
-    Route::get('/', function () {
-        return 'Listar todos os artigos';
-    });
+    Route::get('/',[ArtigoController::class, 'show']);
 
     // Detalhes de um artigo
-    Route::get('/{id}', function ($id) {
-        return "Detalhes do artigo id: $id";
-    });
+    Route::get('/{id}',[ArtigoController::class, 'showArtigo']);
 
     // Criação (admin)
-    Route::post('/', function () {
-        return 'Criar um novo artigo (somente admin)';
-    })->middleware('permissao');
+    Route::post('/', [ArtigoController::class, 'store'])->middleware('permissao');
 
     // Atualização (admin)
-    Route::put('/{id}', function ($id) {
-        return "Atualizar o artigo id: $id (somente admin)";
-    })->middleware('permissao');
+    Route::put('/{id}', [ArtigoController::class, 'update'])->middleware('permissao');
 
     // Exclusão (admin)
-    Route::delete('/{id}', function ($id) {
-        return "Deletar o artigo id: $id (somente admin)";
-    })->middleware('permissao');
+    Route::delete('/{id}', [ArtigoController::class, 'apagar'])->middleware('permissao');
 });
 
 
