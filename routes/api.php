@@ -18,13 +18,16 @@ Route::post('/logout', [AuthController::class, 'logout'])
 // Retorna usuário autenticado
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 
+Route::get('/home', function () {
+    return 'inicio';
+});
 
 /**
  * ROTAS DE CATEGORIA (apenas autenticados)
  */
-Route::prefix('categoria')->middleware('auth:sanctum')->group(function () {
+Route::prefix('categoria')->group(function () {
 
     Route::get('/visualizar', function () {
         return 'Visualizar categorias';
