@@ -13,9 +13,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 Route::post('/cadastro', [AuthController::class, 'store'])->name('api.cadastro');
 
 // Logout precisa autenticação
-Route::post('/logout', [AuthController::class, 'logout'])
-    ->middleware('auth:sanctum')
-    ->name('api.logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
 // Retorna usuário autenticado
 Route::get('/user', function (Request $request) {
@@ -36,11 +34,11 @@ Route::prefix('categoria')->group(function () {
     Route::get('/{id}', [CategoriaController::class, 'showCategoria']);
 
     // Apenas admin (exemplo de middleware de permissão)
-    Route::post('/criar', [CategoriaController::class, 'store'])->middleware('permissao');
+    Route::post('/criar', [CategoriaController::class, 'store']);
 
-    Route::put('/atualizar/{id}', [CategoriaController::class, 'update'])->middleware('permissao');
+    Route::put('/atualizar/{id}', [CategoriaController::class, 'update']);
 
-    Route::delete('/deletar/{id}', [CategoriaController::class, 'destroy'])->middleware('permissao');
+    Route::delete('/deletar/{id}', [CategoriaController::class, 'destroy']);
 });
 
 
@@ -62,22 +60,22 @@ Route::prefix('exemplos')->group(function () {
     // Criação (admin)
     Route::post('/', function () {
         return 'Criar um novo exemplo (somente admin)';
-    })->middleware('permissao');
+    });
 
     // Atualização (admin)
     Route::put('/{id}', function ($id) {
         return "Atualizar o exemplo id: $id (somente admin)";
-    })->middleware('permissao');
+    });
 
     // Remoção (admin)
     Route::delete('/{id}', function ($id) {
         return "Deletar o exemplo id: $id (somente admin)";
-    })->middleware('permissao');
+    });
 
     // Marcar ou desmarcar como favorito
     Route::post('/{id}/favorite', function ($id) {
         return "Marcar/desmarcar exemplo id: $id como favorito";
-    })->middleware('auth:sanctum');
+    });
 });
 
 
@@ -93,24 +91,24 @@ Route::prefix('artigos')->group(function () {
     Route::get('/{id}',[ArtigoController::class, 'showArtigo']);
 
     // Criação (admin)
-    Route::post('/', [ArtigoController::class, 'store'])->middleware('permissao');
+    Route::post('/', [ArtigoController::class, 'store']);
 
     // Atualização (admin)
-    Route::put('/{id}', [ArtigoController::class, 'update'])->middleware('permissao');
+    Route::put('/{id}', [ArtigoController::class, 'update']);
 
     // Exclusão (admin)
-    Route::delete('/{id}', [ArtigoController::class, 'apagar'])->middleware('permissao');
+    Route::delete('/{id}', [ArtigoController::class, 'apagar']);
 });
 
 
 /**
  * ROTAS DE FAVORITOS (apenas autenticados)
  */
-Route::prefix('favoritos')->middleware('auth:sanctum')->group(function () {
+Route::prefix('favoritos')->group(function () {
 
     // Lista favoritos do usuário autenticado
     Route::get('/', function () {
-        return 'Listar exemplos favoritos do usuário autenticado';
+        return 'Listar exemplos favoritos';
     });
 
 });

@@ -40,8 +40,31 @@ class CategoriaController extends Controller
 
     public function update(Request $request, $id)
     {
+        //dd($request->all());
 
+        $regras = [
+            'nome' => 'required',
+            'descricao' => 'required|min:3|max:100'
+        ];
+
+        $feedback = [
+            'nome.required' => 'O selecione qual é a categoria',
+            'descricao.required' => 'O campo da descrição deve ser preenchido',
+            'descricao.min' => 'O campo da descrição deve ter no mínimo 3 caracteres',
+            'descricao.max' => 'O campo da descrição deve ter no máximo 100 caracteres',
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->all());
+
+        return response()->json([
+            'message' => 'Categoria atualizada com sucesso!',
+            'categoria' => $categoria
+        ]);
     }
+
 
     public function destroy($id)
     {

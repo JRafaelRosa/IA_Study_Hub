@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     const CHAT_BOX = 'chatbox';
-    const IMAGES = 'images';
+    const IMAGENS = 'imagens';
     const VIDEO = 'video';
 
     const PROGRAMACAO  = 'programacao';
